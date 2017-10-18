@@ -63,6 +63,14 @@ def wifi_connect(ssid, psk):
     for l in out.split('\n'):
         if l.strip().startswith("inet addr:"):
             ip_address = l.strip().split(' ')[1].split(':')[1]
+    
+    cmd = 'systemctl daemon-reload'
+    cmd_result = os.system(cmd)
+    print cmd + " - " + str(cmd_result)
+
+    cmd = 'systemctl restart dhcpcd'
+    cmd_result = os.system(cmd)
+    print cmd + " - " + str(cmd_result)
 
     return ip_address
 
