@@ -130,6 +130,7 @@ def bluetooth_ready():
     cmd_result = os.system(cmd)
     print cmd + " - " + str(cmd_result)
 
+bluetooth_ready()
 
 try:
     while True:
