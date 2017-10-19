@@ -125,6 +125,10 @@ def handle_client(client_sock) :
 
     return
 
+def bluetooth_ready():
+    cmd="bluetoothctl <<EOF\npower on\ndiscoverable on\npairable on\nagent NoInputNoOutput\ndefault-agent\nEOF"
+    cmd_result = os.system(cmd)
+    print cmd + " - " + str(cmd_result)
 
 
 try:
