@@ -64,14 +64,6 @@ def wifi_connect(ssid, psk):
         if l.strip().startswith("inet addr:"):
             ip_address = l.strip().split(' ')[1].split(':')[1]
     
-    cmd = 'systemctl daemon-reload'
-    cmd_result = os.system(cmd)
-    print cmd + " - " + str(cmd_result)
-
-    cmd = 'systemctl restart dhcpcd'
-    cmd_result = os.system(cmd)
-    print cmd + " - " + str(cmd_result)
-
     return ip_address
 
 
@@ -124,13 +116,6 @@ def handle_client(client_sock) :
     client_sock.send("ip-addres:" + ip_address + "!")
 
     return
-
-def bluetooth_ready():
-    cmd="bluetoothctl <<EOF\npower on\ndiscoverable on\npairable on\nagent NoInputNoOutput\ndefault-agent\nEOF"
-    cmd_result = os.system(cmd)
-    print cmd + " - " + str(cmd_result)
-
-bluetooth_ready()
 
 try:
     while True:
