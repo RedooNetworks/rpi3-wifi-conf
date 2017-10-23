@@ -48,22 +48,20 @@ def change_device_name():
         cmd_result = os.system(cmd)
 
 def set_up_bl():
-    cmd = sudo_mode+"bluetoothctl <<EOF\npower on\nEOF"
+    cmd = sudo_mode+"echo -e 'power on \n quit' | bluetoothctl"
     cmd_result=os.system(cmd);
     if cmd_result==0:
         print(bcolors.OKGREEN+"Bluetooth is powered on!"+bcolors.ENDC)
         time.sleep(2)
-        cmd = sudo_mode+"bluetoothctl <<EOF\npairable on\ndiscoverable on\nEOF"
+        cmd = sudo_mode+"echo -e 'pairable on \n discoverable on \n quit' | bluetoothctl"
         cmd_result=os.system(cmd);
         if cmd_result==0:
             print(bcolors.OKGREEN+"Device is discoverable and pairable!"+bcolors.ENDC)
             time.sleep(2)
-            cmd= sudo_mode+"bluetoothctl <<EOF\nagent NoInputNoOutput\nEOF"
+            cmd= sudo_mode+"echo -e 'agent NoInputNoOutput \n default-agent \n quit' | bluetoothctl"
             cmd_result=os.system(cmd)
             if cmd_result==0:
                 print(bcolors.OKGREEN+"No pair key is set!"+bcolors.ENDC)
-                cmd= sudo_mode+"bluetoothctl <<EOF\ndefault-agent\nEOF"
-                cmd_result=os.system(cmd)
                 
                 cmd = 'systemctl daemon-reload'
                 cmd_result = os.system(cmd)
