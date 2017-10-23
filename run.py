@@ -66,6 +66,13 @@ def wifi_connect(ssid, psk):
     
     return ip_address
 
+def restart_dhcdcp():
+    cmd = 'systemctl daemon-reload'
+        cmd_result = os.system(cmd)
+        
+    cmd = 'systemctl restart dhcpcd'
+        cmd_result = os.system(cmd)
+
 
 
 def ssid_discovered():
@@ -142,6 +149,7 @@ try:
 
         client_sock.close()
         server_sock.close()
+        restart_dhcdcp()
 
         # finished config
         print 'Finished configuration\n'
