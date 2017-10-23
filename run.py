@@ -68,10 +68,10 @@ def wifi_connect(ssid, psk):
 
 def restart_dhcdcp():
     cmd = 'systemctl daemon-reload'
-        cmd_result = os.system(cmd)
+    cmd_result = os.system(cmd)
         
     cmd = 'systemctl restart dhcpcd'
-        cmd_result = os.system(cmd)
+    cmd_result = os.system(cmd)
 
 
 
