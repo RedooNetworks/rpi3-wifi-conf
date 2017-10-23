@@ -9,6 +9,12 @@ def python_bluez_installer():
     if cmd_result == 0:
         print("Python Bluez Module is installed!")
 
+def daemon_comp():
+    cmd = sudo_mode + "cp dbus-org.bluez.service -t /etc/systemd/system"
+    cmd_result=os.system(cmd);
+    if cmd_result == 0:
+        print("Bluetooth Daemon is in compatibility mode!")
+        
 def load_serial_port():
     cmd = sudo_mode + "sdptool add SP"
     cmd_result=os.system(cmd);
@@ -40,6 +46,7 @@ def set_up_bl():
 
 
 python_bluez_installer()
+daemon_comp()
 load_serial_port()
 change_device_name()
 set_up_bl()
