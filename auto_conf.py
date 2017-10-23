@@ -23,7 +23,7 @@ def load_serial_port():
         print("Serial port profile loaded!")
 
 def change_device_name():
-    cmd = sudo_mode+"echo 'rpi' > /etc/machine-info"
+    cmd = sudo_mode+"echo 'PRETTY_HOSTNAME=rpi' > /etc/machine-info"
     cmd_result=os.system(cmd);
     
     if cmd_result == 0:
