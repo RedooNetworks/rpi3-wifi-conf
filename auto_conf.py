@@ -38,7 +38,7 @@ def change_device_name():
         cmd_result = os.system(cmd)
 
 def set_up_bl():
-    cmd = sudo_mode+"bluetoothctl <<EOF\npower on\npairable on\nagent NoInputNoOutput\ndefault-agent\ndiscoverable on\nEOF"
+    cmd = sudo_mode+"bluetoothctl <<EOF\npower on\npairable on\nagent NoInputNoOutput\ndiscoverable on\ndefault-agent\nEOF"
     cmd_result=os.system(cmd);
     
     if cmd_result == 0:
